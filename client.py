@@ -44,6 +44,12 @@ font_main = font.Font(None, 36)
 ball_img = image.load("image/img.png")
 ball_img = transform.scale(ball_img, (20, 20))
 # --- ЗВУКИ ---
+mixer.music.load("music/Dying+Light+Soundtrack+-+Horizon_out.mp3")
+mixer.music.set_volume(0.5)
+mixer.music.play(-1)
+
+ball_wall_sound = mixer.Sound("music/The Essential Retro Video Game Sound Effects Collection [512 sounds].wav")
+ball_wall_sound.set_volume(1.1)
 
 # --- ГРА ---
 game_over = False
@@ -100,10 +106,10 @@ while True:
         if game_state['sound_event']:
             if game_state['sound_event'] == 'wall_hit':
                 # звук відбиття м'ячика від стін
-                pass
+                ball_wall_sound.play()
             if game_state['sound_event'] == 'platform_hit':
                 # звук відбиття м'ячика від платформи
-                pass
+                bal_platform_sound.play()
 
     else:
         wating_text = font_main.render(f"Очікування гравців...", True, (255, 255, 255))
